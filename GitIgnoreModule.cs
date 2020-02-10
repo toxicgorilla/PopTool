@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
-using System.Text;
 
 namespace PopTool
 {
@@ -84,26 +82,11 @@ namespace PopTool
 
             var file = input == "1" ? "basic.txt" : "legacy.txt";
             var embeddedFilePath = $"PopTool.content.gitignore.{file}";
-            var fileContent = ReadEmbeddedFile(embeddedFilePath);
+            var fileContent = Util.ReadEmbeddedFile(embeddedFilePath);
             
             var path = Path.Combine(Environment.CurrentDirectory, ".gitignore");
             Console.WriteLine("File written to: " + path);
             File.WriteAllText(path, fileContent);
-        }
-
-        private static string ReadEmbeddedFile(string embeddedFilePath)
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceStream = assembly.GetManifestResourceStream(embeddedFilePath);
-            if (resourceStream == null)
-            {
-                throw new Exception($"Resource file {embeddedFilePath} not found");
-            }
-
-            using (var reader = new StreamReader(resourceStream, Encoding.UTF8))
-            {
-                return reader.ReadToEnd();
-            }
         }
     }
 }
