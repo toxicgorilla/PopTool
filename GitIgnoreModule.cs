@@ -28,7 +28,41 @@ namespace PopTool
             var doCreateFile = input == "y";
             if (doCreateFile)
             {
+                CheckForExistingFile();
+            }
+        }
+
+        public static void CheckForExistingFile()
+        {
+            var path = Path.Combine(Environment.CurrentDirectory, ".gitignore");
+            var fileAlreadyExists = File.Exists(path);
+            if (!fileAlreadyExists)
+            {
                 DoCreateFile();
+            }
+            else
+            {
+                string input;
+                bool isInputValid;
+
+                do
+                {
+                    Console.WriteLine("A .gitignore file already exists in this directory. Overwrite? (y/n) [n]");
+                    input = (Console.ReadLine() ?? string.Empty).ToLower();
+                    if (input == string.Empty)
+                    {
+                        input = "n";
+                    }
+
+                    isInputValid = input == "y" || input == "n";
+                }
+                while (!isInputValid);
+
+                var doCreateFile = input == "y";
+                if (doCreateFile)
+                {
+                    DoCreateFile();
+                }
             }
         }
 
@@ -61,6 +95,10 @@ namespace PopTool
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceStream = assembly.GetManifestResourceStream(embeddedFilePath);
+            if (resourceStream == null)
+            {
+                throw new Exception($"Resource file {embeddedFilePath} not found");
+            }
 
             using (var reader = new StreamReader(resourceStream, Encoding.UTF8))
             {
