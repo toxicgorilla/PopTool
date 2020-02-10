@@ -8,7 +8,7 @@ namespace PopTool
         {
             Console.WriteLine("Pop Tool...");
 
-            GitIgnoreModule.Start();
+            GitIgnoreModule.Run();
 
             Console.WriteLine("Done");
         }

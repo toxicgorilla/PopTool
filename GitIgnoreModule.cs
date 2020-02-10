@@ -5,7 +5,7 @@ namespace PopTool
 {
     public class GitIgnoreModule
     {
-        public static void Start()
+        public static void Run()
         {
             string input;
             bool isInputValid;
