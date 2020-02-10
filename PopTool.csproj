@@ -8,4 +8,42 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="content\editorconfig\0-base.txt" />
+    <None Remove="content\editorconfig\1-dotnet-coding-conventions.txt" />
+    <None Remove="content\editorconfig\2-naming-conventions.txt" />
+    <None Remove="content\editorconfig\3-code-style-rules.txt" />
+    <None Remove="content\editorconfig\4-formatting-rules.txt" />
+    <None Remove="content\editorconfig\5-visual-basic-code-style-rules.txt" />
+    <None Remove="content\gitignore\basic.txt" />
+    <None Remove="content\gitignore\legacy.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="content\editorconfig\0-base.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="content\editorconfig\1-dotnet-coding-conventions.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="content\editorconfig\2-naming-conventions.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="content\editorconfig\3-code-style-rules.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="content\editorconfig\4-formatting-rules.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="content\editorconfig\5-visual-basic-code-style-rules.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="content\gitignore\basic.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="content\gitignore\legacy.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
